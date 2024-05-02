@@ -11,6 +11,10 @@ function injectDependencies(dependencies: IConfigTypes) {
     DIContainer.register('playerRepository', dependencies.playerRepository);
     DIContainer.register('playerService', dependencies.playerService);
     DIContainer.register('playerController', dependencies.playerController);
+
+    DIContainer.register('userRepository', dependencies.userRepository);
+    DIContainer.register('userService', dependencies.userService);
+    DIContainer.register('authController', dependencies.authController);
 }
 
 export function createApp(dependencies: IConfigTypes): express.Application {

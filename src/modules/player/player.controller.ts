@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { createPlayerValidator, updatePlayerValidator } from './player.validator.js';
 
 import { IPlayerService } from './player.interface.js';
 
@@ -6,6 +7,9 @@ export class PlayerController {
     constructor(private playerService: IPlayerService) { }
 
     async createPlayer(req: Request, res: Response) {
+        const { error } = createPlayerValidator(req.body);
+        if (error) return res.status(400).json({ message: error.details[0].message });
+
         const player = await this.playerService.createPlayer(req.body);
         res.status(201).json(player);
 
@@ -33,6 +37,9 @@ export class PlayerController {
     async updatePlayer(req: Request, res: Response) {
         const { id } = req.params;
         const playerData = req.body;
+
+        const { error } = updatePlayerValidator(playerData);
+        if (error) return res.status(400).json({ message: error.details[0].message });
 
         const updatedPlayer = await this.playerService.updatePlayer(id, playerData);
         if (updatedPlayer) {

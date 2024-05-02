@@ -20,3 +20,15 @@ export interface IPlayerRepository {
     findById(playerId: string): Promise<IPlayer | null>;
     findAll(): Promise<IPlayer[] | null>;
 }
+
+export interface ICreatePlayerDto {
+    name: string;
+    position: string;
+    shirtNumber: number;
+}
+
+export interface IUpdatePlayerDto {
+    name: string;
+    position: string;
+    shirtNumber: number;
+}

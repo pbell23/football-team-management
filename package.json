@@ -5,8 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "lint": "eslint .",
     "test": "node --experimental-vm-modules node_modules/.bin/jest --config jest.config.ts --coverage",
-    "dev": "tsx watch src/start-server.ts"
+    "dev": "tsx watch src/start-server.ts",
+    "build": "tsc",
+    "start": "node dist/start-server.js"
   },
   "keywords": [],
   "author": "Paul Bellamy",

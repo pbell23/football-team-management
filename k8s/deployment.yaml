@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+
+kind: Deployment
+metadata:
+  name: football-manager-api
+  labels:
+    app: football-manager-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: football-manager-api
+  template:
+    metadata:
+      labels:
+        app: football-manager-api
+    spec:
+      containers:
+        - name: football-manager-api
+          image: username/football-manager-api:latest
+          ports:
+            - containerPort: 3000
